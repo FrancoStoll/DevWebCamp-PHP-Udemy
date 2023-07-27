@@ -1,0 +1,44 @@
+@use "base/mixins" as m;
+@use "base/variables" as v;
+
+.paquetes {
+  &__grid {
+    @include m.contenedor;
+    @include m.grid(1, 3rem);
+
+    @include m.tablet {
+      @include m.grid(3, 3rem);
+      align-items: flex-end
+    }
+  }
+
+  &__submit {
+    @include m.boton(v.$azul, v.$blanco);
+    margin-top: 2rem;
+  }
+}
+
+.paquete {
+  @include m.card;
+  &:nth-child(2) {
+    order: -1;
+    @include m.tablet {
+      order: unset;
+    }
+  }
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  border: none;
+  border-radius: 5px;
+  &__lista {
+    @include m.reset-lista;
+    line-height: 2;
+  }
+
+  &__precio {
+    font-size: 5rem;
+    margin: 2rem 0;
+    color: v.$azul;
+    font-weight: v.$black;
+    text-align: center;
+  }
+}
